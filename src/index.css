@@ -1,5 +1,9 @@
+@import "tailwindcss";
 
-@import "tw-animate-css";
+/* Remove or comment out the invalid line below */
+/* @import "tw-animate-css"; */
+
+/* Add any custom styles here if needed */
 
 @plugin "tailwindcss-animate";
 

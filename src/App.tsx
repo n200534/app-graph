@@ -1,6 +1,6 @@
-import { TopBar } from '@/components/layout/TopBar';
-import { LeftRail } from '@/components/layout/LeftRail';
-import { RightPanel } from '@/components/layout/RightPanel';
+import { TopBar } from './components/TopBar'; // Adjusted path to relative
+import { LeftRail } from './components/LeftRail';
+import { RightPanel } from './components/RightPanel'; // Adjust the path as necessary
 
 function App() {
   return (
