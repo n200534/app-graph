@@ -1,20 +1,19 @@
-import { TopBar } from './components/TopBar'; // Adjusted path to relative
-import { LeftRail } from './components/LeftRail';
-import { RightPanel } from './components/RightPanel'; // Adjust the path as necessary
+import { TopBar } from './components/layout/TopBar';
+import { IconRail } from './components/layout/IconRail';
+import { ApplicationsPanel } from './components/layout/AppliationsPanel';
 
 function App() {
   return (
     <div className="h-screen grid grid-rows-[48px_1fr]">
       <TopBar />
 
-      <div className="grid grid-cols-[56px_1fr_360px]">
-        <LeftRail />
+      <div className="grid grid-cols-[56px_300px_1fr]">
+        <IconRail />
+        <ApplicationsPanel />
 
         <main className="bg-muted/30">
-          {/* Canvas placeholder */}
+          {/* ReactFlow canvas later */}
         </main>
-
-        <RightPanel />
       </div>
     </div>
   );
