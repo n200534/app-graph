@@ -13,8 +13,9 @@ async function enableMocking() {
   if (enableMocks) {
     try {
       const { worker } = await import('./mocks/Browser.ts');
-      await worker.start();
-      // helpful info for debugging in deployed site
+      // In deployed environments, avoid noisy warnings for navigation or asset requests
+      // that we don't explicitly mock by bypassing unhandled requests.
+      await worker.start({ onUnhandledRequest: 'bypass' });
       console.info('MSW worker started (mocks enabled)');
     } catch (err) {
       // log the error so deployed console shows why MSW failed
