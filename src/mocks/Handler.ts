@@ -13,9 +13,7 @@ export const handlers = [
   }),
 
   // GET /apps/:appId/graph
-  http.get('/api/apps/:appId/graph', ({ params }) => {
-    const { appId } = params;
-
+  http.get('/api/apps/:appId/graph', () => {
     return HttpResponse.json({
       nodes: [
         {

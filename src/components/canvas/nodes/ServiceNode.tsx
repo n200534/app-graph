@@ -1,11 +1,9 @@
 import { Handle, Position } from '@xyflow/react';
-import type { NodeProps } from '@xyflow/react';
 import type { ServiceNodeData } from '@/types/graph';
 import { Badge } from '@/components/ui/badge';
-import { Slider } from '@/components/ui/slider';
 import { Settings, Cpu, HardDrive, Database, MapPin } from 'lucide-react';
 
-export function ServiceNode({ data }: NodeProps<ServiceNodeData>): JSX.Element {
+export function ServiceNode({ data }: { data: ServiceNodeData }) {
   const statusVariant =
     data.status === 'healthy' ? 'default' : data.status === 'error' ? 'destructive' : 'secondary';
 
