@@ -25,13 +25,16 @@ async function enableMocking() {
   }
 }
 
-enableMocking();
+// Ensure mocks are enabled before the app starts to avoid real network requests
+// racing the service worker registration.
+(async function init() {
+  await enableMocking();
 
-
-createRoot(document.getElementById('root')!).render(
-  <Providers>
-  <StrictMode>
-    <App />
-  </StrictMode>,
-  </Providers>
-)
+  createRoot(document.getElementById('root')!).render(
+    <Providers>
+      <StrictMode>
+        <App />
+      </StrictMode>
+    </Providers>
+  );
+})();
