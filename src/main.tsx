@@ -8,7 +8,9 @@ import '@xyflow/react/dist/style.css';
 
 
 async function enableMocking() {
-  if (import.meta.env.DEV) {
+  // Start MSW when in dev, or when VITE_ENABLE_MOCKS is set to 'true'
+  const enableMocks = import.meta.env.DEV || import.meta.env.VITE_ENABLE_MOCKS === 'true';
+  if (enableMocks) {
     const { worker } = await import('./mocks/Browser.ts');
     return worker.start();
   }
