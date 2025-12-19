@@ -11,8 +11,16 @@ async function enableMocking() {
   // Start MSW when in dev, or when VITE_ENABLE_MOCKS is set to 'true'
   const enableMocks = import.meta.env.DEV || import.meta.env.VITE_ENABLE_MOCKS === 'true';
   if (enableMocks) {
-    const { worker } = await import('./mocks/Browser.ts');
-    return worker.start();
+    try {
+      const { worker } = await import('./mocks/Browser.ts');
+      await worker.start();
+      // helpful info for debugging in deployed site
+      console.info('MSW worker started (mocks enabled)');
+    } catch (err) {
+      // log the error so deployed console shows why MSW failed
+      // common issue: /mockServiceWorker.js 404 because it's not deployed to site root
+      console.error('Failed to start MSW worker', err);
+    }
   }
 }
 
